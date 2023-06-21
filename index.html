@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <style>
+         body{
+            height: 100%;
+         }
+         html{
+            height: 100%;
+         }
+         .sutun{
+            height: 35%;
+            width: 25%;
+            position: absolute;
+            border: 1px black;
+         }
+         .l1{
+            top: 0;
+            left: 7%;
+         }
+         .l2{ 
+            top: 0;
+            left: 33%;
+         }
+         .r2{
+            top: 0;
+            left: 57%
+         }
+         .r1{
+            top: 0;
+            left: 82%;
+         }
+         .left{
+            top: 35%;
+            left: 20%;
+         }
+         .middle{
+            top: 35%;
+            left: 45%; 
+         }
+         .right{
+            top: 35%;
+            left: 70%; 
+         }
+      </style>
+      <title>Notalar</title>
+   </head>	
+   <body background="./taci-serif-cifte-hu.jpg">
+      <div class="sutun l1">
+         <h2>Eser arama</h2>
+         <input type="text" id="eser" onkeyup="" placeholder="Esere göre arama.." title="Eser ismi giriniz.">
+      </div>
+      <div class="sutun l2">
+         <h2>Bestekar arama</h2>
+         <input type="text" id="bestekar" onkeyup="" placeholder="Bestekâra göre arama.." title="Eser ismi giriniz.">
+      </div>
+      <div class="sutun r2">
+         <h2>Söz yazarı arama</h2>
+         <input type="text" id="yazar" onkeyup="" placeholder="Yazara göre arama.." title="Eser ismi giriniz.">
+      </div>
+      <div class="sutun r1">
+         <h2>Form arama</h2>
+         <input type="text" id="form" onkeyup="" placeholder="Forma göre arama.." title="Eser ismi giriniz.">
+      </div>
+      <div class="sutun left">
+         <h2>Usül arama</h2>
+         <input type="text" id="usul" onkeyup="" placeholder="Usüle göre arama.." title="Eser ismi giriniz.">
+      </div>
+      <div class="sutun middle">
+         <h2>Ay tasnifi arama</h2>
+         <input type="text" id="tasnif" onkeyup="" placeholder="Ay tasnifine göre arama.." title="Eser ismi giriniz.">
+      </div>
+      <div class="sutun right">
+         <h2>Makam arama</h2>
+         <input type="text" id="makam" onkeyup="" placeholder="Makama göre arama.." title="Eser ismi giriniz.">
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
+      <script type="text/javascript">
+         $(function () {
+            $.getJSON("./tasavvuf-Notalar/ayin.json", function (data) {
+               localStorage.setItem('notalar', JSON.stringify(data));
+            });
+         });
+         var notalar = JSON.parse(localStorage.getItem('notalar'));
+
+         if (notalar != null) {
+            for (var i = 0; i < users.length; i++) {
+               console.log(users[i].name + " " + users[i].surname);
+            }
+         }
+      </script>
+   </body>	
+</html>
