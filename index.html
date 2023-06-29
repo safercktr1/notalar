@@ -74,20 +74,24 @@
          <h2>Makam arama</h2>
          <input type="text" id="makam" onkeyup="" placeholder="Makama göre arama.." title="Eser ismi giriniz.">
       </div>
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.3/jquery.min.js"></script>
-      <script type="text/javascript">
-         $(function () {
-            $.getJSON("./tasavvuf-Notalar/ayin.json", function (data) {
-               localStorage.setItem('notalar', JSON.stringify(data));
-            });
-         });
-         var notalar = JSON.parse(localStorage.getItem('notalar'));
+      <script>
+         fetch("notalar.xml").then(response => {
+            return response.text();
+         }).then(xmlString => {
+            const xmlDoc = new DOMParser().parseFromString(xmlString, "text/xml");
+            const notes = xmlDoc.querySelectorAll("nota");
 
-         if (notalar != null) {
-            for (var i = 0; i < users.length; i++) {
-               console.log(users[i].name + " " + users[i].surname);
+            for (const nota of notalar) {
+               const eseradi = nota.querySelector("eseradi").textContent;
+               const bestekaradi = nota.querySelector("bestekaradi").textContent;
+               const yazaradi = nota.querySelector("yazaradi").textContent;
+               const formadi = nota.querySelector("formadi").textContent;
+               const usuladi = nota.querySelector("usuladi").textContent;
+               const tasnifadi = nota.querySelector("tasnifadi").textContent;
+               const makamadi = nota.querySelector("makamadi").textContent;
             }
-         }
+            console.log(xmlDoc);
+         });
       </script>
    </body>	
 </html>
