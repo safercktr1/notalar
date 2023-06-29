@@ -79,7 +79,7 @@
             return response.text();
          }).then(xmlString => {
             const xmlDoc = new DOMParser().parseFromString(xmlString, "text/xml");
-            const notes = xmlDoc.querySelectorAll("nota");
+            const notalar = xmlDoc.querySelectorAll("nota");
 
             for (const nota of notalar) {
                const eseradi = nota.querySelector("eseradi").textContent;
