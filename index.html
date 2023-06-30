@@ -75,9 +75,9 @@
          <input type="text" id="makam" onkeyup="" placeholder="Makama göre arama.." title="Eser ismi giriniz.">
       </div>
       <script>
-         const response = fetch('/tasavvuf-Notalar/ayin.json');
-         const notalar = response.json();
-         console.log(notalar);
+         fetch('/tasavvuf-Notalar/ayin.json')
+            .then(response => response.text())
+            .then(text => console.log(text))
          /* fetch("notalar.xml").then(response => {
             return response.text();
          }).then(xmlString => {
