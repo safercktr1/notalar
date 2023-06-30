@@ -76,8 +76,8 @@
       </div>
       <script>
          fetch('/tasavvuf-Notalar/ayin.json')
-            .then(response => response.text())
-            .then(text => console.log(text))
+            .then(response => response.json())
+            .then(json => console.log(JSON.stringify(json)))
          /* fetch("notalar.xml").then(response => {
             return response.text();
          }).then(xmlString => {
