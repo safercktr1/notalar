@@ -75,7 +75,10 @@
          <input type="text" id="makam" onkeyup="" placeholder="Makama göre arama.." title="Eser ismi giriniz.">
       </div>
       <script>
-         fetch("notalar.xml").then(response => {
+         const response = await fetch('/tasavvuf-Notalar/ayin.json');
+         const notalar = await response.json();
+         console.log(notalar);
+         /* fetch("notalar.xml").then(response => {
             return response.text();
          }).then(xmlString => {
             const xmlDoc = new DOMParser().parseFromString(xmlString, "text/xml");
@@ -91,7 +94,7 @@
                const makamadi = nota.querySelector("makamadi").textContent;
             }
             console.log(xmlDoc);
-         });
+         }); */
       </script>
    </body>	
 </html>
