@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html>
    <head>
       <style>
@@ -75,9 +74,14 @@
          <input type="text" id="makam" onkeyup="" placeholder="Makama göre arama.." title="Eser ismi giriniz.">
       </div>
       <script>
-         fetch('/tasavvuf-Notalar/ayin.json')
-            .then(response => response.json())
-            .then(json => console.log(JSON.stringify(json)))
+         fetch('/tasavvuf-Notalar/ayin.json').then(function(response) {
+            return response.json();
+         }).then(function(obj){
+            console.log(obj);
+         }).catch(function(error){
+            console.error('asdasdasd');
+            console.error(error);
+         })
          /* fetch("notalar.xml").then(response => {
             return response.text();
          }).then(xmlString => {
