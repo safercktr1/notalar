@@ -74,6 +74,15 @@
          <input type="text" id="makam" onkeyup="" placeholder="Makama göre arama.." title="Eser ismi giriniz.">
       </div>
       <script>
+         const searchInput = document.querySelector("[data-search]");
+
+         let notas = [];
+
+         searchInput.addEventListener("input", e => {
+            const value = e.target.value;
+            console.log(value);
+         })
+
          fetch('ayin.json').then(function(response) {
             return response.json();
          }).then(function(obj){
@@ -82,6 +91,12 @@
             console.error('asdasdasd');
             console.error(error);
          })
+
+         /* fetch("ayin.json").then(res => res.json()).then(data => {
+            notas = data.map(nota => {
+               
+            });
+         }) */
          /* fetch("notalar.xml").then(response => {
             return response.text();
          }).then(xmlString => {
