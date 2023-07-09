@@ -41,40 +41,78 @@
             top: 35%;
             left: 70%; 
          }
+         .nota-cards{
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
+            gap: .25rem;
+            margin-top: 1rem;
+         }
+         .card{
+            border: 1pc solid black;
+            padding: .5rem;
+         }
+         .hide{
+            display: none;
+         }
       </style>
       <title>Notalar</title>
    </head>	
    <body background="./taci-serif-cifte-hu.jpg">
       <div class="sutun l1">
-         <h2>Eser arama</h2>
-         <input type="text" id="eser" onkeyup="" placeholder="Esere göre arama.." title="Eser ismi giriniz.">
+         <label for = "search">Eser Arama</label>
+         <input type="search" id="eser" placeholder="Esere göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun l2">
-         <h2>Bestekar arama</h2>
+         <label for = "search">Bestekar Arama</label>
          <input type="text" id="bestekar" onkeyup="" placeholder="Bestekâra göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun r2">
-         <h2>Söz yazarı arama</h2>
+         <label for = "search">Söz Yazarı Arama</label>
          <input type="text" id="yazar" onkeyup="" placeholder="Yazara göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun r1">
-         <h2>Form arama</h2>
+         <label for = "search">Form Arama</label>
          <input type="text" id="form" onkeyup="" placeholder="Forma göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun left">
-         <h2>Usül arama</h2>
+         <label for = "search">Usül Arama</label>
          <input type="text" id="usul" onkeyup="" placeholder="Usüle göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun middle">
-         <h2>Ay tasnifi arama</h2>
+         <label for = "search">Ay Tasnifi Arama</label>
          <input type="text" id="tasnif" onkeyup="" placeholder="Ay tasnifine göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun right">
-         <h2>Makam arama</h2>
+         <label for = "search">Makam Arama</label>
          <input type="text" id="makam" onkeyup="" placeholder="Makama göre arama.." title="Eser ismi giriniz.">
       </div>
+      <div class="nota-cards">
+         
+      </div>
+      <template data-class-template>
+         <div class="card">
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+            <p></p>
+         </div>
+      </template>
       <script>
-         const searchInput = document.querySelector("[data-search]");
+         const userCardTemplate = document.querySelector("[data-user-template]");
+
+         fetch("ayin.json")
+         .then(res => res.json())
+         .then(data => {
+            data.forEach(nota => {
+               const card = userCardTemplate.content.cloneNode(true);
+               console.log(nota);
+            });
+         })
+
+         /* const searchInput = document.querySelector("[data-search]");
 
          let notas = [];
 
@@ -83,14 +121,15 @@
             console.log(value);
          })
 
-         fetch('ayin.json').then(function(response) {
+         fetch('ayin.json').
+         then(function(response) {
             return response.json();
          }).then(function(obj){
             console.log(obj);
          }).catch(function(error){
             console.error('asdasdasd');
             console.error(error);
-         })
+         }) */
 
          /* fetch("ayin.json").then(res => res.json()).then(data => {
             notas = data.map(nota => {
