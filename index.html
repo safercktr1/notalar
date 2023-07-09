@@ -106,6 +106,7 @@
          .then(res => res.json())
          .then(data => {
             data = JSON.stringify(data);
+            data = JSON.parse(data);
             data.forEach(nota => {
                const card = userCardTemplate.content.cloneNode(true).children[0];
                const eser = nota.eser;
