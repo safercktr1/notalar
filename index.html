@@ -106,7 +106,7 @@
          fetch("ayin.json")
          .then(res => res.json())
          .then(data => {
-            data.forEach(nota => {
+            data.array.forEach(nota => {
                const card = userCardTemplate.content.cloneNode(true);
                console.log(nota);
             });
