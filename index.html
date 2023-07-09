@@ -64,51 +64,57 @@
       </div>
       <div class="sutun l2">
          <label for = "search">Bestekar Arama</label>
-         <input type="text" id="bestekar" onkeyup="" placeholder="Bestekâra göre arama.." title="Eser ismi giriniz.">
+         <input type="search" id="bestekar" placeholder="Bestekâra göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun r2">
          <label for = "search">Söz Yazarı Arama</label>
-         <input type="text" id="yazar" onkeyup="" placeholder="Yazara göre arama.." title="Eser ismi giriniz.">
+         <input type="search" id="yazar" placeholder="Yazara göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun r1">
          <label for = "search">Form Arama</label>
-         <input type="text" id="form" onkeyup="" placeholder="Forma göre arama.." title="Eser ismi giriniz.">
+         <input type="search" id="form" placeholder="Forma göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun left">
          <label for = "search">Usül Arama</label>
-         <input type="text" id="usul" onkeyup="" placeholder="Usüle göre arama.." title="Eser ismi giriniz.">
+         <input type="search" id="usul" placeholder="Usüle göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun middle">
          <label for = "search">Ay Tasnifi Arama</label>
-         <input type="text" id="tasnif" onkeyup="" placeholder="Ay tasnifine göre arama.." title="Eser ismi giriniz.">
+         <input type="search" id="tasnif" placeholder="Ay tasnifine göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun right">
          <label for = "search">Makam Arama</label>
-         <input type="text" id="makam" onkeyup="" placeholder="Makama göre arama.." title="Eser ismi giriniz.">
+         <input type="search" id="makam" placeholder="Makama göre arama.." title="Eser ismi giriniz.">
       </div>
-      <div class="nota-cards">
-         
-      </div>
-      <template data-class-template>
+      <div class="nota-cards" data-nota-cards-container></div>
+      <template data-nota-template>
          <div class="card">
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
-            <p></p>
+            <div class="eser" data-eser></div>
+            <div class="bestekar" data-bestekar></div>
+            <div class="yazar" data-yazar></div>
+            <div class="forma" data-forma></div>
+            <div class="usul" data-usul></div>
+            <div class="tasnif" data-tasnif></div>
+            <div class="makam" data-makam></div>
          </div>
       </template>
       <script>
-         const userCardTemplate = document.querySelector("[data-user-template]");
+         const notaCardTemplate = document.querySelector("[data-nota-template]");
+         const notaCardContainer = document.querySelector("[data-nota-cards-container]");
 
-         fetch("ayin.json")
+         fetch("esma.json")
          .then(res => res.json())
          .then(data => {
-            data.array.forEach(nota => {
-               const card = userCardTemplate.content.cloneNode(true);
-               console.log(nota);
+            data.forEach(nota => {
+               const card = userCardTemplate.content.cloneNode(true).children[0];
+               const eser = nota.eser;
+               const bestekar = nota.bestekar;
+               const yazar = nota.yazar;
+               const forma = nota.forma;
+               const usul = nota.usul;
+               const tasnif = nota.tasnif;
+               const makam = nota.makam;
+               notaCardContainer.append(card);
             });
          })
 
