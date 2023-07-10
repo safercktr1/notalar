@@ -58,6 +58,7 @@
       <title>Notalar</title>
    </head>	
    <body background="./taci-serif-cifte-hu.jpg">
+      <p id="deneme"></p>
       <div class="sutun l1">
          <label for = "search">Eser Arama</label>
          <input type="search" id="eser" placeholder="Esere göre arama.." title="Eser ismi giriniz.">
@@ -99,10 +100,15 @@
          </div>
       </template>
       <script>
-         const notaCardTemplate = document.querySelector("[data-nota-template]");
+         xmlParser = new DOMParser();
+         xmlDoc = xmlParser.parseFromString(text, "notalar.xml");
+
+         document.getElementById("deneme").innerHTML = xmlDoc.getElementsByTagName("eseradi")[0].childNodes[0].nodeValue;
+
+         /* const notaCardTemplate = document.querySelector("[data-nota-template]");
          const notaCardContainer = document.querySelector("[data-nota-cards-container]");
 
-         fetch("esma.json")
+         fetch("notalar.xml")
          .then(res => res.json())
          .then(data => {
             data = JSON.stringify(data);
@@ -118,7 +124,7 @@
                const makam = nota.makam;
                notaCardContainer.append(card);
             });
-         })
+         }) */
 
          /* const searchInput = document.querySelector("[data-search]");
 
