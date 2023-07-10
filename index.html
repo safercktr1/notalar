@@ -100,8 +100,18 @@
          </div>
       </template>
       <script>
+         text = "<notalar><nota>" +
+         "<eseradi>Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)</eseradi>" +
+         "<bestekaradi>Metin Alkanlı</bestekaradi>" +
+         "<yazaradi>Belirsiz</yazaradi>" +
+         "<formadi>Esmaül Hüsna</formadi>" +
+         "<usuladi>Çifte Düyek</usuladi>" +
+         "<tasnifadi>Genel</tasnifadi>" +
+         "<makamadi>Bestenigar</makamadi>" +
+         "</nota></notalar>";
+
          xmlParser = new DOMParser();
-         xmlDoc = xmlParser.parseFromString(notalar.xml, "text/xml");
+         xmlDoc = xmlParser.parseFromString(text, "text/xml");
 
          document.getElementById("deneme").innerHTML = xmlDoc.getElementsByTagName("eseradi")[0].childNodes[0].nodeValue;
 
