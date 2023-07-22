@@ -152,7 +152,7 @@
 
          xmlParser = new DOMParser();
          xmlDoc = fetch("./esma.json").then((res) => {return res.json();})
-         jsonArr = json.parse(xmlDoc);
+         jsonArr = JSON.parse(xmlDoc);
          //xmlDoc = xmlParser.parseFromString(text, "text/xml");
 
          function search_eser(){
