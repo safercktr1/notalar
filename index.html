@@ -150,7 +150,7 @@
          "<makamadi>Bestenigar</makamadi>" +
          "</nota></notalar>";
 
-         const esma = [{"eseradi": " Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)",
+         const esma = {"esmalar": [{"eseradi": " Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)",
                   "bestekar": "Metin Alkanlı",
                   "yazar": "Belirsiz",
                   "makam": "Bestenigar",
@@ -188,8 +188,7 @@
                   "usul": "Sofyan",
                   "tasnif": "Genel",
                   "8": "http://sanatmuziginotalari.com/eser_detay.asp?esid=68171&esera= Ya Rahman ya Allam ya Hannan ya Mennan",
-            },]
-         const esmaJson = JSON.parse(esma);
+            },]}
 
          /* xmlParser = new DOMParser();
          xmlDoc = fetch("./esma.json").then((res) => {return res.json();})
@@ -201,7 +200,7 @@
             input = input.toLowerCase();
             let y = document.getElementsByClassName("notalarli");
             for(let i = 0; i < 4; i++){
-               let x = esmaJson.eseradi;
+               let x = esma.esmalar[i].eseradi;
                if(x.toLowerCase().includes(input)){
                   //document.getElementById("deneme").innerHTML += x;
                   y[i].style.display="list-item";
