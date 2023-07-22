@@ -145,7 +145,7 @@
             input = input.toLowerCase();
             for(let i = 0; i < 4; i++){
                let x = xmlDoc.getElementsByTagName("eseradi")[i].childNodes[0].nodeValue;
-               if(input == x){
+               if(x.toLowerCase().includes(input)){
                   document.getElementById("deneme").innerHTML += x;
                }
             }
