@@ -150,9 +150,50 @@
          "<makamadi>Bestenigar</makamadi>" +
          "</nota></notalar>";
 
-         xmlParser = new DOMParser();
+         const esma = [{"eseradi": " Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)",
+                  "bestekar": "Metin Alkanlı",
+                  "yazar": "Belirsiz",
+                  "makam": "Bestenigar",
+                  "form": "Esmaül Hüsna",
+                  "usul": "Çifte Düyek",
+                  "tasnif": "Genel",
+                  "8": "http://sanatmuziginotalari.com/eser_detay.asp?esid=38850&esera= Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)",
+            },
+            {
+                  "eseradi": " Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)",
+                  "bestekar": "Metin Alkanlı",
+                  "yazar": "Belirsiz",
+                  "makam": "Nihavend",
+                  "form": "Esmaül Hüsna",
+                  "usul": "Sofyan",
+                  "tasnif": "Genel",
+                  "8": "http://sanatmuziginotalari.com/eser_detay.asp?esid=52606&esera= Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)",
+            },
+            {
+                  "eseradi": " Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)",
+                  "bestekar": "Metin Alkanlı",
+                  "yazar": "Belirsiz",
+                  "makam": "Rast",
+                  "form": "Esmaül Hüsna",
+                  "usul": "Sofyan",
+                  "tasnif": "Genel",
+                  "8": "http://sanatmuziginotalari.com/eser_detay.asp?esid=57735&esera= Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)",
+            },
+            {
+                  "eseradi": " Ya Rahman ya Allam ya Hannan ya Mennan",
+                  "bestekar": "Belirsiz",
+                  "yazar": "Belirsiz",
+                  "makam": "Uşşak",
+                  "form": "Esma-ı Hüsna",
+                  "usul": "Sofyan",
+                  "tasnif": "Genel",
+                  "8": "http://sanatmuziginotalari.com/eser_detay.asp?esid=68171&esera= Ya Rahman ya Allam ya Hannan ya Mennan",
+            },]
+         const esmaJson = JSON.parse(esma);
+
+         /* xmlParser = new DOMParser();
          xmlDoc = fetch("./esma.json").then((res) => {return res.json();})
-         jsonArr = JSON.parse(xmlDoc);
+         jsonArr = JSON.parse(xmlDoc); */
          //xmlDoc = xmlParser.parseFromString(text, "text/xml");
 
          function search_eser(){
@@ -160,7 +201,7 @@
             input = input.toLowerCase();
             let y = document.getElementsByClassName("notalarli");
             for(let i = 0; i < 4; i++){
-               let x = jsonArr[i].eseradi;
+               let x = esmaJson.eseradi;
                if(x.toLowerCase().includes(input)){
                   //document.getElementById("deneme").innerHTML += x;
                   y[i].style.display="list-item";
