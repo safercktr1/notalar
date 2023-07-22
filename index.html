@@ -41,7 +41,7 @@
             top: 35%;
             left: 70%; 
          }
-         .nota-cards{
+         /* .nota-cards{
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
             gap: .25rem;
@@ -53,7 +53,7 @@
          }
          .hide{
             display: none;
-         }
+         } */
       </style>
       <title>Notalar</title>
    </head>	
@@ -61,7 +61,7 @@
       <p id="deneme"></p>
       <div class="sutun l1">
          <label for = "search">Eser Arama</label>
-         <input type="search" id="eser" placeholder="Esere göre arama.." title="Eser ismi giriniz.">
+         <input type="text" id="eser" onkeyup="search_eser()" placeholder="Esere göre arama.." title="Eser ismi giriniz.">
       </div>
       <div class="sutun l2">
          <label for = "search">Bestekar Arama</label>
@@ -140,7 +140,18 @@
          xmlParser = new DOMParser();
          xmlDoc = xmlParser.parseFromString(text, "text/xml");
 
-         document.getElementById("deneme").innerHTML = xmlDoc.getElementsByTagName("eseradi")[3].childNodes[0].nodeValue;
+         function search_eser(){
+            let input = document.getElementById('eser').value;
+            input = input.toLowerCase();
+            for(let i = 0; i < 4; i++){
+               let x = xmlDoc.getElementsByTagName("eseradi")[i].childNodes[0].nodeValue;
+               if(input == x){
+                  document.getElementById("deneme").innerHTML += x;
+               }
+            }
+         }
+      
+         //document.getElementById("deneme").innerHTML = xmlDoc.getElementsByTagName("eseradi")[3].childNodes[0].nodeValue;
 
          /* const notaCardTemplate = document.querySelector("[data-nota-template]");
          const notaCardContainer = document.querySelector("[data-nota-cards-container]");
