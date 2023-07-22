@@ -41,19 +41,6 @@
             top: 35%;
             left: 70%; 
          }
-         /* .nota-cards{
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(225px, 1fr));
-            gap: .25rem;
-            margin-top: 1rem;
-         }
-         .card{
-            border: 1pc solid black;
-            padding: .5rem;
-         }
-         .hide{
-            display: none;
-         } */
       </style>
       <title>Notalar</title>
    </head>	
@@ -125,18 +112,6 @@
             <p>Bestenigar</p>
          </li>
       </ol>
-      <!-- <div class="nota-cards" data-nota-cards-container></div>
-      <template data-nota-template>
-         <div class="card">
-            <div class="eser" data-eser></div>
-            <div class="bestekar" data-bestekar></div>
-            <div class="yazar" data-yazar></div>
-            <div class="forma" data-forma></div>
-            <div class="usul" data-usul></div>
-            <div class="tasnif" data-tasnif></div>
-            <div class="makam" data-makam></div>
-         </div>
-      </template> -->
       <script>
          text = "<notalar><nota>" +
          "<eseradi>Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)</eseradi>" +
@@ -176,13 +151,24 @@
          "</nota></notalar>";
 
          xmlParser = new DOMParser();
-         xmlDoc = xmlParser.parseFromString(text, "text/xml");
+         xmlDoc = fetch("./esma.json").then((res) => {return res.json();})
+         //xmlDoc = xmlParser.parseFromString(text, "text/xml");
 
          function search_eser(){
             let input = document.getElementById('eser').value;
             input = input.toLowerCase();
             let y = document.getElementsByClassName("notalarli");
-            for(let i = 0; i < 4; i++){
+            for(let i = 0; i<xmlDoc.length(); i++){
+               let x = xmlDoc[i].eseradi;
+               if(x.toLowerCase().includes(input)){
+                  //document.getElementById("deneme").innerHTML += x;
+                  y[i].style.display="list-item";
+               }
+               else{
+                  y[i].style.display="none";
+               }
+            }
+            /* for(let i = 0; i < 4; i++){
                let x = xmlDoc.getElementsByTagName("eseradi")[i].childNodes[0].nodeValue;
                if(x.toLowerCase().includes(input)){
                   document.getElementById("deneme").innerHTML += x;
@@ -191,73 +177,8 @@
                else{
                   y[i].style.display="none";
                }
-            }
+            } */
          }
-      
-         //document.getElementById("deneme").innerHTML = xmlDoc.getElementsByTagName("eseradi")[3].childNodes[0].nodeValue;
-
-         /* const notaCardTemplate = document.querySelector("[data-nota-template]");
-         const notaCardContainer = document.querySelector("[data-nota-cards-container]");
-
-         fetch("notalar.xml")
-         .then(res => res.json())
-         .then(data => {
-            data = JSON.stringify(data);
-            data = JSON.parse(data);
-            data.forEach(nota => {
-               const card = userCardTemplate.content.cloneNode(true).children[0];
-               const eser = nota.eser;
-               const bestekar = nota.bestekar;
-               const yazar = nota.yazar;
-               const forma = nota.forma;
-               const usul = nota.usul;
-               const tasnif = nota.tasnif;
-               const makam = nota.makam;
-               notaCardContainer.append(card);
-            });
-         }) */
-
-         /* const searchInput = document.querySelector("[data-search]");
-
-         let notas = [];
-
-         searchInput.addEventListener("input", e => {
-            const value = e.target.value;
-            console.log(value);
-         })
-
-         fetch('ayin.json').
-         then(function(response) {
-            return response.json();
-         }).then(function(obj){
-            console.log(obj);
-         }).catch(function(error){
-            console.error('asdasdasd');
-            console.error(error);
-         }) */
-
-         /* fetch("ayin.json").then(res => res.json()).then(data => {
-            notas = data.map(nota => {
-               
-            });
-         }) */
-         /* fetch("notalar.xml").then(response => {
-            return response.text();
-         }).then(xmlString => {
-            const xmlDoc = new DOMParser().parseFromString(xmlString, "text/xml");
-            const notalar = xmlDoc.querySelectorAll("nota");
-
-            for (const nota of notalar) {
-               const eseradi = nota.querySelector("eseradi").textContent;
-               const bestekaradi = nota.querySelector("bestekaradi").textContent;
-               const yazaradi = nota.querySelector("yazaradi").textContent;
-               const formadi = nota.querySelector("formadi").textContent;
-               const usuladi = nota.querySelector("usuladi").textContent;
-               const tasnifadi = nota.querySelector("tasnifadi").textContent;
-               const makamadi = nota.querySelector("makamadi").textContent;
-            }
-            console.log(xmlDoc);
-         }); */
       </script>
    </body>	
 </html>

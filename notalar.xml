@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
 <notalar>
-    <nota>
+    <nota id = "0">
         <eseradi>Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)</eseradi>
         <bestekaradi>Metin Alkanlı</bestekaradi>
         <yazaradi>Belirsiz</yazaradi>
@@ -8,7 +9,7 @@
         <tasnifadi>Genel</tasnifadi>
         <makamadi>Bestenigar</makamadi>
     </nota>
-    <nota>
+    <nota id = "1">
         <eseradi>Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)</eseradi>
         <bestekaradi>Metin Alkanlı</bestekaradi>
         <yazaradi>Belirsiz</yazaradi>
@@ -17,7 +18,7 @@
         <tasnifadi>Genel</tasnifadi>
         <makamadi>Bestenigar</makamadi>
     </nota>
-    <nota>
+    <nota id = "2">
         <eseradi>Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)</eseradi>
         <bestekaradi>Metin Alkanlı</bestekaradi>
         <yazaradi>Belirsiz</yazaradi>
@@ -26,7 +27,7 @@
         <tasnifadi>Genel</tasnifadi>
         <makamadi>Bestenigar</makamadi>
     </nota>
-    <nota>
+    <nota id = "3">
         <eseradi>Hüvallahüllezi La ilahe illa Hu (Esmaül Hüsna)</eseradi>
         <bestekaradi>Metin Alkanlı</bestekaradi>
         <yazaradi>Belirsiz</yazaradi>
